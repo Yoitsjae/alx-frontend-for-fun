@@ -1,3 +1,11 @@
+// Assign text color to button and change on hover
+button {
+  color: #FF0000;
+
+  &:hover {
+    color: #00FF00;
+  }
+}
 button {
   color: #FF0000;
 }
