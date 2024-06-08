@@ -1,14 +1,16 @@
-// Assign text color to button and change on hover
+/* 6-nested_hover.scss
+ * This Sass file assigns a text color to button tags and changes the text color on hover.
+ */
+
+// Define color variables for easy maintenance
+$button-color: #FF0000;
+$button-hover-color: #00FF00;
+
+// Style button and its hover state using nested declarations
 button {
-  color: #FF0000;
+  color: $button-color;
 
   &:hover {
-    color: #00FF00;
+    color: $button-hover-color;
   }
-}
-button {
-  color: #FF0000;
-}
-button:hover {
-  color: #00FF00;
 }
