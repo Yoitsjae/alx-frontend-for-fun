@@ -1,6 +1,35 @@
-// 103-sort_strings.scss
+/* 103-sort_strings.scss
+ * This Sass file sorts the given list of names and prints the sorted list in the debug output.
+ */
+
+// Define the list of names to sort
 $list_to_sort: john, anna, zoe, kim, felicia, carrie;
 
-$list_sorted: sort($list_to_sort);
+// Function to sort the list
+@function sort-list($list) {
+  $sorted-list: ();
+  $list-length: length($list);
 
-@debug $list_sorted;
+  @for $i from 1 through $list-length {
+    $min: nth($list, 1);
+    $min-index: 1;
+
+    @for $j from 2 through length($list) {
+      @if nth($list, $j) < $min {
+        $min: nth($list, $j);
+        $min-index: $j;
+      }
+    }
+
+    $sorted-list: append($sorted-list, $min);
+    $list: join(slice($list, 1, $min-index - 1), slice($list, $min-index + 1, length($list)));
+  }
+
+  @return $sorted-list;
+}
+
+// Sort the list and store the result
+$sorted_list: sort-list($list_to_sort);
+
+// Print the sorted list in the debug output
+@debug $sorted_list;
