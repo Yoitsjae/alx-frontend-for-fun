@@ -5,8 +5,29 @@
 // Define the list of names to sort
 $list_to_sort: john, anna, zoe, kim, felicia, carrie;
 
-// Sort the list using Sass's built-in sort() function
-$sorted_list: sort($list_to_sort);
+// Function to sort the list using insertion sort
+@function insertion-sort($list) {
+  $sorted-list: ();
+
+  @each $item in $list {
+    $inserted: false;
+    @for $i from 1 through length($sorted-list) {
+      @if $item < nth($sorted-list, $i) {
+        $sorted-list: join(slice($sorted-list, 1, $i - 1), $item, slice($sorted-list, $i));
+        $inserted: true;
+        @break;
+      }
+    }
+    @if not $inserted {
+      $sorted-list: append($sorted-list, $item);
+    }
+  }
+
+  @return $sorted-list;
+}
+
+// Sort the list and store the result
+$sorted_list: insertion-sort($list_to_sort);
 
 // Print the sorted list in the debug output
 @debug $sorted_list;
