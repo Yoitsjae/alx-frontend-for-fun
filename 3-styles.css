@@ -1,0 +1,114 @@
+/* Base styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+nav.menu {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  z-index: 1;
+}
+
+.menu-open-button {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #d32f2f;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* Styling the lines of the toggle button */
+.menu-line {
+  display: block;
+  width: 30px;
+  height: 4px;
+  margin: 4px 0;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* When menu is open, rotate lines to create 'X' */
+.menu-open:checked + .menu-open-button .menu-line-1 {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-open:checked + .menu-open-button .menu-line-2 {
+  opacity: 0;
+}
+
+.menu-open:checked + .menu-open-button .menu-line-3 {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Menu item styles */
+.menu-item {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #d32f2f;
+  color: white;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.menu-item i {
+  font-size: 24px;
+}
+
+/* Positioning menu items */
+.menu-item:nth-child(3) {
+  top: -120px;
+  left: 0;
+}
+
+.menu-item:nth-child(4) {
+  top: -85px;
+  left: 85px;
+}
+
+.menu-item:nth-child(5) {
+  top: 0;
+  left: 120px;
+}
+
+.menu-item:nth-child(6) {
+  top: 85px;
+  left: 85px;
+}
+
+.menu-item:nth-child(7) {
+  top: 120px;
+  left: 0;
+}
+
+/* Show items when menu is open */
+.menu-open:checked ~ .menu-item {
+  transform: scale(1);
+}
+
+/* Menu item hover effect */
+.menu-item:hover {
+  background: #b71c1c;
+}
