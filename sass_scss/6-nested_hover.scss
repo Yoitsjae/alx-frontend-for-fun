@@ -1,7 +1,11 @@
+// File: 6-nested_hover.scss
 button {
+  // Default text color
   color: #FF0000;
 
+  // Hover state
   &:hover {
     color: #00FF00;
+    transition: color 0.3s ease; // Smooth transition for better user experience
   }
 }
