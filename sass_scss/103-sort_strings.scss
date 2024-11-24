@@ -1,5 +1,6 @@
 // File: 103-sort_strings.scss
 
+// Input list to sort
 $list_to_sort: john, anna, zoe, kim, felicia, carrie;
 
 // Function to sort a list alphabetically
@@ -7,21 +8,27 @@ $list_to_sort: john, anna, zoe, kim, felicia, carrie;
   $sorted-list: (); // Initialize an empty list
 
   @while length($list) > 0 {
-    $min: nth($list, 1);
+    $min: nth($list, 1); // Assume the first element is the smallest
 
+    // Find the smallest element in the list
     @each $item in $list {
       @if $item < $min {
         $min: $item;
       }
     }
 
+    // Append the smallest element to the sorted list
     $sorted-list: append($sorted-list, $min);
+
+    // Remove the smallest element from the original list
     $list: remove($list, index($list, $min));
   }
 
-  @return $sorted-list;
+  @return $sorted-list; // Return the sorted list
 }
 
-// Sort the list and debug output
+// Call the function to sort the input list
 $sorted_list: sort-list($list_to_sort);
+
+// Output the sorted list using debug
 @debug $sorted_list;
