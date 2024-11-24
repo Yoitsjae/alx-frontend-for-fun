@@ -1,8 +1,6 @@
-// Assign text color to button tags
 button {
   color: #FF0000;
 
-  // Change text color on hover
   &:hover {
     color: #00FF00;
   }
